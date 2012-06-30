@@ -1,5 +1,5 @@
 #
-# cssmin.rb - 1.0.0
+# cssmin.rb - 1.0.1
 # Author: Matthias Siegel - https://github.com/matthiassiegel/cssmin
 # This is a Ruby port of the CSS minification tool
 # distributed with YUICompressor, based on the original Java
@@ -148,7 +148,7 @@ module CssCompressor
     #
     # Retain space for special IE6 cases
     #
-    css = css.gsub(/:first-(line|letter)(\{|,)/) { ":first-#{$1.to_s} #{$2.to_s}" }
+    css = css.gsub(/:first-(line|letter)(\{|,)/i) { ":first-#{$1.to_s.downcase} #{$2.to_s}" }
     
     #
     # No space after the end of a preserved comment
@@ -180,7 +180,7 @@ module CssCompressor
     #
     # Replace 0(px,em,%) with 0
     #
-    css = css.gsub(/([\s:])(0)(px|em|%|in|cm|mm|pc|pt|ex)/i) { $1.to_s + $2.to_s }
+    css = css.gsub(/(^|[^0-9])(?:0?\.)?0(?:px|em|%|in|cm|mm|pc|pt|ex|deg|g?rad|m?s|k?hz)/i) { $1.to_s + '0' }
     
     #
     # Replace 0 0 0 0; with 0
@@ -204,7 +204,7 @@ module CssCompressor
     # Shorten colors from rgb(51,102,153) to #336699
     # This makes it more likely that it'll get further compressed in the next step.
     #
-    css = css.gsub(/rgb\s*\(\s*([0-9,\s]+)\s*\)/i) {
+    css = css.gsub(/rgb\s*\(\s*([0-9,\s]+)\s*\)(\d+%)?/i) {
       rgbcolors = $1.to_s.split(',')
       i = 0
       
@@ -216,6 +216,10 @@ module CssCompressor
         end
         
         i += 1
+      end
+      
+      unless $2.to_s.empty?
+        rgbcolors << (' ' + $2.to_s)
       end
       
       '#' + rgbcolors.join('')
@@ -234,7 +238,7 @@ module CssCompressor
     rest = css
     new_css = ''
     
-    while m = rest.match(/(\=\s*?["']?)?#([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])(:?\}|[^0-9a-fA-F{][^{]*?\})/i) do
+    while m = rest.match(/(\=\s*?["']?)?#([0-9a-f])([0-9a-f])([0-9a-f])([0-9a-f])([0-9a-f])([0-9a-f])(:?\}|[^0-9a-f{][^{]*?\})/i) do
       #
       # Normal color value
       #
@@ -271,7 +275,7 @@ module CssCompressor
     #
     # border: none -> border:0
     #
-    css = css.gsub(/(border|border-top|border-right|border-bottom|border-right|outline|background):none(;|\})/i) { "#{$1.to_s.downcase}:0#{$2.to_s}" }
+    css = css.gsub(/(border|border-top|border-right|border-bottom|border-left|outline|background):none(;|\})/i) { "#{$1.to_s.downcase}:0#{$2.to_s}" }
     
     #
     # Shorter opacity IE filter
