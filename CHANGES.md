@@ -1,4 +1,4 @@
-### 1.0.2-wip
+### 1.0.2 (30 June 2012)
 
 * Removed unnecessary Bundler dependency
 
