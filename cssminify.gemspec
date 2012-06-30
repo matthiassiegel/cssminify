@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/matthiassiegel/cssminify"
   s.summary     = "CSS minification with YUI compressor, but as native Ruby port."
   s.description = <<-EOF
-    The CSSminify gem provides CSS compression using YUI compressor. Instead of wrapping around the Java or Javascript version of YUI compressor it uses a native Ruby port of the CSS engine. Therefore this gem has no dependencies except Bundler.
+    The CSSminify gem provides CSS compression using YUI compressor. Instead of wrapping around the Java or Javascript version of YUI compressor it uses a native Ruby port of the CSS engine. Therefore this gem has no dependencies.
   EOF
   
   s.extra_rdoc_files = [
@@ -26,7 +26,5 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- spec/*`.split("\n")
   s.require_paths = ["lib"]
 
-  s.add_development_dependency "rspec"
-  
-  s.add_runtime_dependency "bundler", "~> 1.0"
+  s.add_development_dependency "rspec", "~> 2.7"
 end

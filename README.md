@@ -1,7 +1,7 @@
 # CSSminify
 CSS minification with YUI compressor, but as native Ruby port.
 
-The CSSminify gem provides CSS compression using YUI compressor. Instead of wrapping around the Java or Javascript version of YUI compressor it uses a native [Ruby port](https://github.com/matthiassiegel/cssmin) of the CSS engine. Therefore this gem has no dependencies except Bundler.
+The CSSminify gem provides CSS compression using YUI compressor. Instead of wrapping around the Java or Javascript version of YUI compressor it uses a native [Ruby port](https://github.com/matthiassiegel/cssmin) of the CSS engine. Therefore this gem has no dependencies.
 
 In basic benchmarks the Ruby version performed about as good as the Java jar. It currently passes all CSS test cases included with the YUI compressor Java source code.
 
