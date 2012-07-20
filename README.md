@@ -1,4 +1,4 @@
-# CSSminify  [![Build Status](https://secure.travis-ci.org/matthiassiegel/cssminify.png)](http://travis-ci.org/matthiassiegel/cssminify)
+# CSSminify [![Build Status](https://secure.travis-ci.org/matthiassiegel/cssminify.png)](http://travis-ci.org/matthiassiegel/cssminify)
 
 CSS minification with YUI compressor, but as native Ruby port.
 
