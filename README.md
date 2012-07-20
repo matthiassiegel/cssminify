@@ -1,4 +1,5 @@
-# CSSminify
+# CSSminify  [![Build Status](https://secure.travis-ci.org/matthiassiegel/cssminify.png)](http://travis-ci.org/matthiassiegel/cssminify)
+
 CSS minification with YUI compressor, but as native Ruby port.
 
 The CSSminify gem provides CSS compression using YUI compressor. Instead of wrapping around the Java or Javascript version of YUI compressor it uses a native [Ruby port](https://github.com/matthiassiegel/cssmin) of the CSS engine. Therefore this gem has no dependencies.
@@ -46,6 +47,9 @@ Note: in most cases line length will only be approximated.
 Rails 3.1 integrated [Sprockets](https://github.com/sstephenson/sprockets) to provide asset packaging and minimising out of the box. For CSS compression it relies on the [yui-compressor gem](https://github.com/sstephenson/ruby-yui-compressor) which requires Java. To use CSSminify instead, edit your config/application.rb file:
 
     config.assets.css_compressor = CSSminify.new
+
+## Compatibility
+Tested with Ruby 1.9.2, 1.9.3, jruby-19mode, rbx-19mode
 
 ## Changelog
 See [CHANGES](https://github.com/matthiassiegel/cssminify/blob/master/CHANGES.md).
