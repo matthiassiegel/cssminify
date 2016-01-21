@@ -8,6 +8,12 @@ In basic benchmarks the Ruby version performed about as good as the Java jar. It
 
 Main motivation for the Ruby port and this gem was to reduce dependencies like Java.
 
+---
+
+**PLEASE NOTE**: this project is no longer maintained.
+
+---
+
 ## Installation
 Install CSSminify from RubyGems:
 
